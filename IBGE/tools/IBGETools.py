@@ -12,8 +12,9 @@ class getIBGE:
         #Parametros
         self.urlDescribe = 'http://api.sidra.ibge.gov.br/desctabapi.aspx?c='
         self.urlService = 'http://api.sidra.ibge.gov.br/values'
-    
-    def describeSite(self,table):
+      
+    def scrapingdata(self,table,periodo = 'last',variavel = 'all'):
+    #def describeSite(self,table):
         
         #Requisicao da informacao
         html = requests.get(self.urlDescribe+str(table))
@@ -27,9 +28,7 @@ class getIBGE:
         #Colentando a clssificacao da tabela
         classif = scrap.find(id='lstClassificacoes_lblIdClassificacao_0')
         
-        return 'C'+classif.text
-        
-    def scrapingdata(table,classificacao,periodo='last',variavel='all'):
+        classificacao = "C"+classif.text
     
         #parametros
         tabela = '/t/'+str(table)
@@ -37,7 +36,7 @@ class getIBGE:
         variavel = '/v/'+str(variavel)
         nivelterritorial = '/n3/52/n6/in n3 52'
         classifi = '/'+classificacao+'/all'
-    
+        
         #Parametros
         params = tabela + periodo + variavel + nivelterritorial+classifi+'/h/y'
     
