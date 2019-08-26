@@ -1,3 +1,12 @@
+"""
+
+  Created in 15.08.2019
+
+  Author: Bernard Silva
+
+  Geoprocessing Researcher
+
+"""
 #Importando modulos
 import requests
 import json
